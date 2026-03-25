@@ -1,5 +1,6 @@
 import { LogIn } from 'lucide-react'
 import { Link } from 'lucide-react'
+import { Link as RouterLink } from '@tanstack/react-router'
 
 export const Route = {
   component: StudIndexPage,
@@ -28,7 +29,7 @@ export function StudIndexPage() {
         </div>
         <div className="footer">
           <button className="formbtn"><LogIn /> Sign In</button>
-          <p>Don't have an account? <a href="#" className='forgotpass'>Register here</a></p>
+          <p>Don't have an account? <RouterLink to="/student/signup" className='forgotpass'>Register here</RouterLink></p>
         </div>
       </div>
     </div>

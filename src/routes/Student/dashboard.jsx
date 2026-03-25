@@ -1,4 +1,4 @@
-import { Hash, GraduationCap, User, Search, Filter, ChevronDown } from 'lucide-react'
+import { Hash, GraduationCap, User, Search, Filter, ChevronDown, Calendar, Clock, MapPin, Building2 } from 'lucide-react'
 import { useState } from 'react'
 
 export function StudDashboardPage() {
@@ -96,7 +96,7 @@ export function StudDashboardPage() {
             end:      "12:00",
             room:     "Room A-104",
             building: "Engineering Block, 1st Floor",
-            status:   "upcoming",
+            status:   "Completed",
         },
         {
             id:       "CS280",
@@ -106,7 +106,7 @@ export function StudDashboardPage() {
             end:      "16:00",
             room:     "Room D-301",
             building: "Engineering Block, 3rd Floor",
-            status:   "upcoming",
+            status:   "Completed",
         },
     ];
 
@@ -192,30 +192,56 @@ export function StudDashboardPage() {
                 </div>
 
                 {/* CONTENT */}
-                <div className="contents">
-                    <div className="contcon">
-                        <div className="head">
-                        <p className='courseID'>CS 301</p>
-                        <p className='status upcoming'>Upcoming</p>
-                        </div>
-                        <div className="cardBody">
-                        <h3 className="courseTitle">Data Structures and Algorithms</h3>
-                        <div className="metaRow">
-                            <span className="metaItem">
-                            <CalendarIcon /> Feb 15, 2026
-                            </span>
-                            <span className="metaItem">
-                            <ClockIcon /> 9:00 AM - 12:00 PM
-                            </span>
-                        </div>
-                        <div className="locationBox">
-                            <span className="locItem"><PinIcon /> Room A-102</span>
-                            <span className="locItem"><BuildingIcon /> Engineering Block, 1st Floor</span>
-                        </div>
-                        </div>
-                    </div>
-                    <div className="contcon"></div>
-                    <div className="contcon"></div>
+                <div className="exam-cards-container">
+                    {examSchedule
+                        .filter(exam => selected === "All Exams" || 
+                                (selected === "Upcoming" && exam.status === "upcoming") ||
+                                (selected === "Completed" && exam.status === "Completed"))
+                        .map((exam) => (
+                            <div key={exam.id} className={`exam-card ${exam.status}`}>
+                                <div className="exam-card-content">
+                                    <div className="exam-card-left">
+                                        <div className="course-code">{exam.id}</div>
+                                        <h3 className="exam-title">{exam.course}</h3>
+                                        <div className="exam-details">
+                                            <div className="exam-detail-item">
+                                                <Calendar size={16} />
+                                                <span>{new Date(exam.date).toLocaleDateString('en-US', { 
+                                                    weekday: 'short', 
+                                                    month: 'short', 
+                                                    day: 'numeric', 
+                                                    year: 'numeric' 
+                                                })}</span>
+                                            </div>
+                                            <div className="exam-detail-item">
+                                                <Clock size={16} />
+                                                <span>{exam.start} - {exam.end}</span>
+                                            </div>
+                                            <div className="exam-location">
+                                                <div className="exam-detail-item">
+                                                    <MapPin size={16} />
+                                                    <span className="exam-location-text">
+                                                        {exam.room} {exam.building}
+                                                    </span>
+                                                </div>
+                                                <div className="exam-detail-item">
+                                                    <Building2 size={16} />
+                                                    <span className="exam-location-text">
+                                                        {exam.building}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="exam-card-right">
+                                        <div className={`exam-status ${exam.status}`}>
+                                            {exam.status === 'in_progress' ? 'In Progress' : 'Upcoming'}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
 
             </div>
