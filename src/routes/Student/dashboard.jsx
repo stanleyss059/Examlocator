@@ -4,8 +4,9 @@ import { useState } from 'react'
 export function StudDashboardPage() {
     const [open, setOpen] = useState(false)
     const [selected, setSelected] = useState("All Exams")
+    const [searchQuery, setSearchQuery] = useState("")
 
-    const options = ["All Exams", "Upcoming", "Completed"]
+    const options = ["All Exams", "Upcoming", "In Progress", "Completed"]
 
     const examSchedule = [
         {
@@ -26,7 +27,7 @@ export function StudDashboardPage() {
             end:      "17:00",
             room:     "Lab 3",
             building: "Computer Science Building, 2nd Floor",
-            status:   "upcoming",
+            status:   "in_progress",
         },
         {
             id:       "CS310",
@@ -66,7 +67,7 @@ export function StudDashboardPage() {
             end:      "11:00",
             room:     "Hall A",
             building: "Main Examination Hall",
-            status:   "upcoming",
+            status:   "in_progress",
         },
         {
             id:       "CS320",
@@ -110,6 +111,10 @@ export function StudDashboardPage() {
         },
     ];
 
+    const upcomingCount = examSchedule.filter(exam => exam.status === "upcoming").length
+    const inProgressCount = examSchedule.filter(exam => exam.status === "in_progress").length
+    const completedCount = examSchedule.filter(exam => exam.status === "Completed").length
+
     return (
         <div className="stud-dashboard-page">
 
@@ -134,17 +139,17 @@ export function StudDashboardPage() {
             {/* EXAM INFO */}
             <div className="examinfo">
                 <div className="examinfoS">
-                    <p className="toptxt1">3</p>
+                    <p className="toptxt1">{upcomingCount}</p>
                     <p className="btntxt">Upcoming Exams</p>
                 </div>
 
                 <div className="examinfoS">
-                    <p className="toptxt2">1</p>
+                    <p className="toptxt2">{inProgressCount}</p>
                     <p className="btntxt">In Progress</p>
                 </div>
 
                 <div className="examinfoS">
-                    <p className="toptxt3">2</p>
+                    <p className="toptxt3">{completedCount}</p>
                     <p className="btntxt">Completed</p>
                 </div>
             </div>
@@ -160,7 +165,9 @@ export function StudDashboardPage() {
 
                         <input
                             type="text"
-                            placeholder="Search..."
+                            placeholder="Search exams..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
 
@@ -194,9 +201,20 @@ export function StudDashboardPage() {
                 {/* CONTENT */}
                 <div className="exam-cards-container">
                     {examSchedule
-                        .filter(exam => selected === "All Exams" || 
+                        .filter(exam => {
+                            const matchesFilter = selected === "All Exams" || 
                                 (selected === "Upcoming" && exam.status === "upcoming") ||
-                                (selected === "Completed" && exam.status === "Completed"))
+                                (selected === "In Progress" && exam.status === "in_progress") ||
+                                (selected === "Completed" && exam.status === "Completed")
+                            
+                            const matchesSearch = !searchQuery || 
+                                exam.course.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                exam.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                exam.room.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                                exam.building.toLowerCase().includes(searchQuery.toLowerCase())
+                            
+                            return matchesFilter && matchesSearch
+                        })
                         .map((exam) => (
                             <div key={exam.id} className={`exam-card ${exam.status}`}>
                                 <div className="exam-card-content">
