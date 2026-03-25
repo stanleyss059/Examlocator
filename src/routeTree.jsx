@@ -13,6 +13,7 @@ import { StudRootLayout } from './routes/Student/__root'
 // Pages
 import { StudIndexPage } from './routes/Student/index'
 import { StudDashboardPage } from './routes/Student/dashboard'
+import { StudSignupPage } from './routes/Student/signUp'
 
 // ----------------------
 // ROOT ROUTE
@@ -62,6 +63,12 @@ const studDashboardRoute = new Route({
   component: StudDashboardPage,
 })
 
+const studSignupRoute = new Route({
+  getParentRoute: () => studRootRoute,
+  path: 'signup',
+  component: StudSignupPage,
+})
+
 
 // ----------------------
 // ROUTE TREE
@@ -72,6 +79,7 @@ export const routeTree = rootRoute.addChildren([
     studRedirectRoute,
     studLoginRoute,
     studDashboardRoute,
+    studSignupRoute,
   ]),
 ])
 
