@@ -9,13 +9,16 @@ import {
 // Layouts
 import { RootLayout } from './routes/__root'
 import { StudRootLayout } from './routes/Student/__root'
+import { StaffRootLayout } from './routes/Staff/__root'
 
 // Pages
 import { StudIndexPage } from './routes/Student/index'
 import { StudDashboardPage } from './routes/Student/dashboard'
 import { StudSignupPage } from './routes/Student/signUp'
 
-// ----------------------
+import { StaffdashboardPage } from'./routes/Staff/adminDashboard'
+
+// ---------------------
 // ROOT ROUTE
 // ----------------------
 const rootRoute = new RootRoute({
@@ -43,9 +46,22 @@ const studRootRoute = new Route({
   component: StudRootLayout,
 })
 
+// Parent (/Staff)
+const staffRootRoute = new Route({
+  getParentRoute: () => rootRoute,
+  path: '/staff',
+  component: StaffRootLayout,
+})
+
 // "/student" → "/student/login"
 const studRedirectRoute = new Route({
   getParentRoute: () => studRootRoute,
+  path: '/',
+  component: () => <Navigate to="login" replace />,
+})
+// "/staff" → "/staff/login"
+const staffRedirectRoute = new Route({
+  getParentRoute: () => staffRootRoute,
   path: '/',
   component: () => <Navigate to="login" replace />,
 })
@@ -55,6 +71,13 @@ const studLoginRoute = new Route({
   getParentRoute: () => studRootRoute,
   path: 'login',
   component: StudIndexPage,
+})
+
+// "/staff/staffDashboard"
+const staffdashboardRoute = new Route({
+  getParentRoute: () => staffRootRoute,
+  path: 'staffdashboard',
+  component: StaffdashboardPage,
 })
 
 const studDashboardRoute = new Route({
@@ -81,6 +104,10 @@ export const routeTree = rootRoute.addChildren([
     studDashboardRoute,
     studSignupRoute,
   ]),
+  staffRootRoute.addChildren([
+    staffRedirectRoute,
+    staffdashboardRoute,
+  ])
 ])
 
 // ----------------------
