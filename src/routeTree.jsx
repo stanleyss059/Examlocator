@@ -16,7 +16,7 @@ import { StudIndexPage } from './routes/Student/index'
 import { StudDashboardPage } from './routes/Student/dashboard'
 import { StudSignupPage } from './routes/Student/signUp'
 
-import { StaffdashboardPage } from'./routes/Staff/adminDashboard'
+import { StaffdashboardPage } from'./routes/Staff/staffDashboard'
 
 // ---------------------
 // ROOT ROUTE
