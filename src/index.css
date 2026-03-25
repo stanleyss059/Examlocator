@@ -615,3 +615,301 @@ body {
     padding: 20px;
   }
 }
+
+/* staff-dashboard */
+.staff-dashboard{
+  display: flex;
+  flex-direction: column;
+  background-color: #F3F4F6;
+
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+.staff-header{
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(to right, #1F3A53, #254B5A);
+  padding: 30px;
+  color: white;
+  gap: 20px;
+  align-items: center;
+}
+
+/* STAFF DASHBOARD EXAM TABLE UI */
+.main-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Controls Row */
+.exam-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-box input {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px 0 44px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  color: #6B7280;
+  outline: none;
+}
+
+.search-box input::placeholder {
+  color: #9CA3AF;
+}
+
+.search-box input:focus {
+  border-color: #1E3A5F;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9CA3AF;
+}
+
+.assign-exam-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 20px;
+  background-color: #1E3A5F;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.assign-exam-btn:hover {
+  background-color: #254B5A;
+}
+
+/* Stats */
+.exam-stats {
+  display: flex;
+  gap: 12px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background-color: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.stat-item svg {
+  color: #6B7280;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: #374151;
+}
+
+.stat-label {
+  color: #6B7280;
+}
+
+.stat-upcoming {
+  border-color: #A7F3D0;
+  color: #059669;
+}
+
+.stat-upcoming svg {
+  color: #10B981;
+}
+
+.stat-upcoming .stat-value,
+.stat-upcoming .stat-label {
+  color: #059669;
+}
+
+.stat-ongoing {
+  border-color: #FED7AA;
+  color: #D97706;
+}
+
+.stat-ongoing svg {
+  color: #F59E0B;
+}
+
+.stat-ongoing .stat-value,
+.stat-ongoing .stat-label {
+  color: #D97706;
+}
+
+.stat-completed {
+  border-color: #E5E7EB;
+  color: #4B5563;
+}
+
+.stat-completed svg {
+  color: #6B7280;
+}
+
+.stat-completed .stat-value,
+.stat-completed .stat-label {
+  color: #4B5563;
+}
+
+/* Table */
+.exam-table-container {
+  background-color: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.exam-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.exam-table thead {
+  background-color: #F9FAFB;
+}
+
+.exam-table th {
+  padding: 12px 20px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6B7280;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.exam-table th:last-child {
+  text-align: right;
+}
+
+.exam-table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #F3F4F6;
+  vertical-align: middle;
+}
+
+.exam-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Course Info */
+.course-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.course-codes {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1F2937;
+}
+
+.course-name {
+  font-size: 16px;
+  color: #6B7280;
+}
+
+/* DateTime Info */
+.datetime-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.exam-date {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.exam-time {
+  font-size: small;
+  color: #6B7280;
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.status-upcoming {
+  background-color: #CCFBF1;
+  color: #0F766E;
+}
+
+.status-ongoing {
+  background-color: #FEF3C7;
+  color: #B45309;
+}
+
+.status-completed {
+  background-color: #E5E7EB;
+  color: #4B5563;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #6B7280;
+}
+
+.action-btn:hover {
+  background-color: #F3F4F6;
+  color: #374151;
+}
+
+.edit-btn:hover {
+  background-color: #DBEAFE;
+  color: #1E40AF;
+}
+
+.delete-btn:hover {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}
