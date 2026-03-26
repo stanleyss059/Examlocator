@@ -157,7 +157,7 @@ export function StaffdashboardPage(){
                                     </td>
                                     <td>
                                         <div className="action-buttons">
-                                            <button className="action-btn edit-btn">
+                                            <button className="action-btn edit-btn" onClick={() => navigate({ to: '/staff/editExam' })}>
                                                 <Edit2 size={16} />
                                             </button>
                                             <button className="action-btn delete-btn">
