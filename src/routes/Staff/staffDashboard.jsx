@@ -1,5 +1,6 @@
 import { Shield, Search, Plus, MapPin, Calendar, Clock, Edit2, Trash2 } from 'lucide-react'
 import { useState } from 'react'
+import { useNavigate } from '@tanstack/react-router'
 
 export const Route = {
   component: StaffdashboardPage,
@@ -55,6 +56,7 @@ const examData = [
 
 export function StaffdashboardPage(){
     const [searchQuery, setSearchQuery] = useState('')
+    const navigate = useNavigate()
 
     const totalExams = examData.length
     const upcomingExams = examData.filter(e => e.status === 'upcoming').length
@@ -90,7 +92,7 @@ export function StaffdashboardPage(){
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
-                    <button className="assign-exam-btn">
+                    <button className="assign-exam-btn" onClick={() => navigate({ to: '/staff/assignNewExam' })}>
                         <Plus size={18} />
                         Assign New Exam
                     </button>

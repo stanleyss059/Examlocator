@@ -913,3 +913,314 @@ body {
   background-color: #FEE2E2;
   color: #DC2626;
 }
+
+/* ASSIGN NEW EXAM PAGE */
+.assign-exam-page {
+  display: flex;
+  flex-direction: column;
+  background-color: #F3F4F6;
+  min-height: 100vh;
+}
+
+.assign-exam-header {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, #1F3A53, #254B5A);
+  padding: 30px;
+  color: white;
+  gap: 20px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  width: fit-content;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.header-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-text h1 {
+  margin: 0 0 4px 0;
+  font-size: 24px;
+}
+
+.header-text .subtext {
+  margin: 0;
+  color: #9CA3AF;
+}
+
+.assign-exam-form-container {
+  padding: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.assign-exam-form {
+  background-color: white;
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+  margin-bottom: 32px;
+}
+
+.form-section h2 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1F2937;
+  border-bottom: 2px solid #E5E7EB;
+  padding-bottom: 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  background-color: white;
+  font-size: 14px;
+  color: #1F2937;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #1E3A5F;
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+}
+
+.form-group input::placeholder {
+  color: #9CA3AF;
+}
+
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 40px;
+}
+
+.form-group select option {
+  padding: 10px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.cancel-btn {
+  padding: 12px 24px;
+  background-color: white;
+  color: #6B7280;
+  border: 1px solid #D1D5DB;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #F3F4F6;
+  border-color: #9CA3AF;
+}
+
+.submit-btn {
+  padding: 12px 24px;
+  background-color: #1E3A5F;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #254B5A;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .assign-exam-form-container {
+    padding: 20px;
+  }
+
+  .assign-exam-form {
+    padding: 24px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-group {
+    min-width: auto;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .cancel-btn,
+  .submit-btn {
+    width: 100%;
+  }
+}
+
+/* ROOM ALLOCATIONS TABLE */
+.room-allocations-table {
+  margin-top: 20px;
+}
+
+.allocation-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.allocation-table thead {
+  background-color: #F9FAFB;
+}
+
+.allocation-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6B7280;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.allocation-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #F3F4F6;
+  vertical-align: middle;
+}
+
+.allocation-table tr:last-child td {
+  border-bottom: none;
+}
+
+.table-input {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 14px;
+  color: #1F2937;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.table-input:focus {
+  border-color: #1E3A5F;
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+}
+
+.table-input::placeholder {
+  color: #9CA3AF;
+}
+
+.table-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.table-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #6B7280;
+  transition: all 0.2s ease;
+}
+
+.table-action-btn:hover {
+  background-color: #F3F4F6;
+  color: #374151;
+}
+
+.table-action-btn.add-btn:hover {
+  background-color: #D1FAE5;
+  color: #059669;
+}
+
+.table-action-btn.delete-btn:hover {
+  background-color: #FEE2E2;
+  color: #DC2626;
+}
+
+.table-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.table-action-btn:disabled:hover {
+  background: none;
+  color: #6B7280;
+}

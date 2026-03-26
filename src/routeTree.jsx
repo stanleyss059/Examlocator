@@ -17,6 +17,7 @@ import { StudDashboardPage } from './routes/Student/dashboard'
 import { StudSignupPage } from './routes/Student/signUp'
 
 import { StaffdashboardPage } from'./routes/Staff/staffDashboard'
+import { AssignNewExamPage } from './routes/Staff/assignNewExam'
 
 // ---------------------
 // ROOT ROUTE
@@ -80,6 +81,13 @@ const staffdashboardRoute = new Route({
   component: StaffdashboardPage,
 })
 
+// "/staff/assignNewExam"
+const assignNewExamRoute = new Route({
+  getParentRoute: () => staffRootRoute,
+  path: 'assignNewExam',
+  component: AssignNewExamPage,
+})
+
 const studDashboardRoute = new Route({
   getParentRoute: () => studRootRoute,
   path: 'dashboard',
@@ -107,6 +115,7 @@ export const routeTree = rootRoute.addChildren([
   staffRootRoute.addChildren([
     staffRedirectRoute,
     staffdashboardRoute,
+    assignNewExamRoute,
   ])
 ])
 
