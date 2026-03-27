@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { User, Mail, Hash, GraduationCap, School, Edit2, Check, X, Camera } from "lucide-react";
 
 function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
@@ -21,124 +22,220 @@ function ProfilePage() {
     console.log("Updated user:", user);
   };
 
+  const handleCancel = () => {
+    setIsEditing(false);
+  };
+
+  const getInitials = (name) => {
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase();
+  };
+
+  const getRoleColor = (role) => {
+    switch (role.toLowerCase()) {
+      case "student":
+        return "#2A6F68";
+      case "staff":
+        return "#4A72A6";
+      case "admin":
+        return "#8B5CF6";
+      default:
+        return "#6B7280";
+    }
+  };
+
   return (
     <div className="profile-page">
-
-      <div className="profile-card">
-
-        {/* HEADER */}
-        <div className="profile-header">
-          <div className="avatar">👤</div>
-
-          <div>
-            <h2>{user.name}</h2>
-            <p className="role">{user.role}</p>
-          </div>
-        </div>
-
-        {/* DETAILS */}
-        <div className="profile-details">
-
-          {/* NAME */}
-          <div className="profile-row">
-            <span>Full Name</span>
-            {isEditing ? (
-              <input
-                name="name"
-                value={user.name}
-                onChange={handleChange}
-              />
-            ) : (
-              <p>{user.name}</p>
-            )}
-          </div>
-
-          {/* EMAIL */}
-          <div className="profile-row">
-            <span>Email</span>
-            {isEditing ? (
-              <input
-                name="email"
-                value={user.email}
-                onChange={handleChange}
-              />
-            ) : (
-              <p>{user.email}</p>
-            )}
-          </div>
-
-          {/* ID */}
-          <div className="profile-row">
-            <span>ID</span>
-            <p>{user.id}</p>
-          </div>
-
-          {/* DEPARTMENT */}
-          <div className="profile-row">
-            <span>Department</span>
-            {isEditing ? (
-              <select
-                name="department"
-                value={user.department}
-                onChange={handleChange}
-              >
-                <option>Computer Science</option>
-                <option>Civil Engineering</option>
-                <option>Mechanical Engineering</option>
-                <option>Business Administration</option>
-                <option>Electrical Engineering</option>
-              </select>
-            ) : (
-              <p>{user.department}</p>
-            )}
-          </div>
-
-          {/* LEVEL */}
-          <div className="profile-row">
-            <span>Level</span>
-            {isEditing ? (
-              <select
-                name="level"
-                value={user.level}
-                onChange={handleChange}
-              >
-                <option>100</option>
-                <option>200</option>
-                <option>300</option>
-                <option>400</option>
-              </select>
-            ) : (
-              <p>{user.level}</p>
-            )}
-          </div>
-
-        </div>
-
-        {/* BUTTONS */}
-        {!isEditing ? (
-          <button
-            className="edit-btn"
-            onClick={() => setIsEditing(true)}
-          >
-            Edit Profile
-          </button>
-        ) : (
-          <div className="action-buttons">
-            <button className="save-btn" onClick={handleSave}>
-              Save
-            </button>
-
-            <button
-              className="cancel-btn"
-              onClick={() => setIsEditing(false)}
+      <div className="profile-container">
+        {/* Header Section */}
+        <div className="profile-header-section">
+          <div className="profile-cover"></div>
+          <div className="profile-avatar-wrapper">
+            <div 
+              className="profile-avatar"
+              style={{ backgroundColor: getRoleColor(user.role) }}
             >
-              Cancel
-            </button>
+              <span className="avatar-initials">{getInitials(user.name)}</span>
+              <button className="avatar-camera-btn" title="Change Photo">
+                <Camera size={14} />
+              </button>
+            </div>
           </div>
-        )}
+          <div className="profile-header-info">
+            <h1 className="profile-name">{user.name}</h1>
+            <span 
+              className="profile-role-badge"
+              style={{ backgroundColor: getRoleColor(user.role) }}
+            >
+              {user.role}
+            </span>
+          </div>
+        </div>
 
+        {/* Main Content */}
+        <div className="profile-content">
+          {/* Info Card */}
+          <div className="profile-info-card">
+            <div className="profile-card-header">
+              <h2>Personal Information</h2>
+              {!isEditing ? (
+                <button 
+                  className="profile-edit-btn"
+                  onClick={() => setIsEditing(true)}
+                >
+                  <Edit2 size={16} />
+                  Edit Profile
+                </button>
+              ) : (
+                <div className="profile-action-btns">
+                  <button 
+                    className="profile-save-btn"
+                    onClick={handleSave}
+                  >
+                    <Check size={16} />
+                    Save
+                  </button>
+                  <button 
+                    className="profile-cancel-btn"
+                    onClick={handleCancel}
+                  >
+                    <X size={16} />
+                    Cancel
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div className="profile-fields">
+              {/* Full Name */}
+              <div className="profile-field">
+                <div className="field-icon">
+                  <User size={18} />
+                </div>
+                <div className="field-content">
+                  <label>Full Name</label>
+                  {isEditing ? (
+                    <input
+                      type="text"
+                      name="name"
+                      value={user.name}
+                      onChange={handleChange}
+                      className="profile-input"
+                    />
+                  ) : (
+                    <p className="field-value">{user.name}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="profile-field">
+                <div className="field-icon">
+                  <Mail size={18} />
+                </div>
+                <div className="field-content">
+                  <label>Email Address</label>
+                  {isEditing ? (
+                    <input
+                      type="email"
+                      name="email"
+                      value={user.email}
+                      onChange={handleChange}
+                      className="profile-input"
+                    />
+                  ) : (
+                    <p className="field-value">{user.email}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* ID */}
+              <div className="profile-field">
+                <div className="field-icon">
+                  <Hash size={18} />
+                </div>
+                <div className="field-content">
+                  <label>ID Number</label>
+                  <p className="field-value">{user.id}</p>
+                </div>
+              </div>
+
+              {/* Department */}
+              <div className="profile-field">
+                <div className="field-icon">
+                  <GraduationCap size={18} />
+                </div>
+                <div className="field-content">
+                  <label>Department</label>
+                  {isEditing ? (
+                    <select
+                      name="department"
+                      value={user.department}
+                      onChange={handleChange}
+                      className="profile-select"
+                    >
+                      <option>Computer Science</option>
+                      <option>Civil Engineering</option>
+                      <option>Mechanical Engineering</option>
+                      <option>Business Administration</option>
+                      <option>Electrical Engineering</option>
+                    </select>
+                  ) : (
+                    <p className="field-value">{user.department}</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Level */}
+              <div className="profile-field">
+                <div className="field-icon">
+                  <School size={18} />
+                </div>
+                <div className="field-content">
+                  <label>Level</label>
+                  {isEditing ? (
+                    <select
+                      name="level"
+                      value={user.level}
+                      onChange={handleChange}
+                      className="profile-select"
+                    >
+                      <option>100</option>
+                      <option>200</option>
+                      <option>300</option>
+                      <option>400</option>
+                    </select>
+                  ) : (
+                    <p className="field-value">Level {user.level}</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Stats Card */}
+          <div className="profile-stats-card">
+            <h3>Quick Stats</h3>
+            <div className="stats-grid">
+              <div className="stat-box">
+                <span className="stat-number">12</span>
+                <span className="stat-label">Exams Taken</span>
+              </div>
+              <div className="stat-box">
+                <span className="stat-number">3</span>
+                <span className="stat-label">Upcoming</span>
+              </div>
+              <div className="stat-box">
+                <span className="stat-number">85%</span>
+                <span className="stat-label">Average</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { Outlet } from '@tanstack/react-router'
+import { Outlet, Link } from '@tanstack/react-router'
 import logo from '../../assets/logo.png'
 import { useRouter } from '@tanstack/react-router'
 import { User } from 'lucide-react'
@@ -20,9 +20,9 @@ export function StudRootLayout() {
                     <img src={logo} alt="logo" className="student-nav-logo" />
                 </div>
                 {!isAuthPage && (
-                    <button className="student-profile-btn" title="Profile">
+                    <Link to="/student/profile" className="student-profile-btn" title="Profile">
                         <User size={20} />
-                    </button>
+                    </Link>
                 )}
             </nav>
             <div className="student-content">
