@@ -6,6 +6,8 @@ import {
   Navigate,
 } from '@tanstack/react-router'
 
+import ProfilePage from './components/ProfilePage'
+
 // Layouts
 import { RootLayout } from './routes/__root'
 import { StudRootLayout } from './routes/Student/__root'
@@ -40,6 +42,14 @@ const rootRedirectRoute = new Route({
 // ----------------------
 // STUDENT ROUTES
 // ----------------------
+
+studRootRoute.addChildren([
+  studRedirectRoute,
+  studLoginRoute,
+  studDashboardRoute,
+  studSignupRoute,
+  studProfileRoute, 
+])
 
 // Parent (/student)
 const studRootRoute = new Route({
@@ -138,3 +148,9 @@ export const router = new Router({
 export function AppRouter() {
   return <RouterProvider router={router} />
 }
+
+const studProfileRoute = new Route({
+  getParentRoute: () => studRootRoute,
+  path: 'profile',
+  component: ProfilePage,
+})

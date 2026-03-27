@@ -174,3 +174,12 @@ export function StaffdashboardPage(){
         </div>
     )
 }
+
+/* profile */
+<Profile
+  name="Mr. Mensah"
+  role="Staff"
+  email="mensah@uni.edu"
+  id="STF102"
+  department="Electrical Engineering"
+/>
