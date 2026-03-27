@@ -1,13 +1,33 @@
 import { Outlet } from '@tanstack/react-router'
+import logo from '../../assets/logo.png'
+import { useRouter } from '@tanstack/react-router'
+import { User } from 'lucide-react'
 
 export const Route = {
     component: StaffRootLayout,
 }
 
 export function StaffRootLayout() {
+    const router = useRouter();
+    const currentPath = router.state.location.pathname;
+
+    const isAuthPage = currentPath === '/staff/login'
+
     return (
-        <div className="stud-root-layout">
-            <Outlet />
+        <div className="staff-root">
+            <nav className="staff-navbar">
+                <div className="staff-nav-brand">
+                    <img src={logo} alt="logo" className="staff-nav-logo" />
+                </div>
+                {!isAuthPage && (
+                    <button className="staff-profile-btn" title="Profile">
+                        <User size={20} />
+                    </button>
+                )}
+            </nav>
+            <div className="staff-content">
+                <Outlet />
+            </div>
         </div>
     )
 }
