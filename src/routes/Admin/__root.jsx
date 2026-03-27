@@ -1,5 +1,5 @@
 import { Outlet, Link, useRouter } from '@tanstack/react-router'
-import { LayoutDashboard, Users, GraduationCap } from 'lucide-react'
+import { LayoutDashboard, Users, GraduationCap, User, FileText } from 'lucide-react'
 import logo from '../../assets/logo.png'
 
 export const Route = {
@@ -14,6 +14,7 @@ export function AdminRootLayout() {
         { path: '/admin/adminDashboard', label: 'Dashboard', icon: LayoutDashboard },
         { path: '/admin/adminstud', label: 'Students', icon: GraduationCap },
         { path: '/admin/adminstaff', label: 'Staff', icon: Users },
+        { path: '/admin/requestApproval', label: 'Requests', icon: FileText },
     ]
 
     return (
@@ -41,7 +42,9 @@ export function AdminRootLayout() {
                     })}
                 </div>
                 <div className="admin-nav-profile">
-                    <span>Admin</span>
+                    <Link to="/admin/profile" className="admin-profile-btn" title="Profile">
+                        <User size={20} />
+                    </Link>
                 </div>
             </nav>
             <div className="admin-content">

@@ -266,9 +266,3 @@ export function StudDashboardPage() {
         </div>
     )
 }
-
-const studProfileRoute = new Route({
-  getParentRoute: () => studRootRoute,
-  path: 'profile',
-  component: ProfilePage,
-})

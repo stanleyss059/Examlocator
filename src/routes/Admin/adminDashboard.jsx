@@ -1,4 +1,4 @@
-import { Shield, Users, Calendar, BookOpen, TrendingUp, Activity, AlertCircle, Search, Plus, Filter, ArrowRight, LayoutDashboard, FileText } from 'lucide-react'
+import { Shield, Users, Calendar, BookOpen, TrendingUp, Activity, AlertCircle, Search, Plus, Filter, ArrowRight, LayoutDashboard, FileText, CheckCircle, XCircle } from 'lucide-react'
 import { useState } from 'react'
 
 export const Route = {
@@ -21,9 +21,12 @@ export function AdminDashboardPage() {
     const recentActivity = [
         { id: 1, type: 'exam_created', message: 'New exam "CS 301 Midterm" created', time: '2 hours ago', user: 'John Smith' },
         { id: 2, type: 'user_registered', message: 'New student registration: Emily Davis', time: '3 hours ago', user: 'System' },
-        { id: 3, type: 'exam_completed', message: 'Exam "Math 101 Final" completed', time: '5 hours ago', user: 'Sarah Johnson' },
-        { id: 4, type: 'user_updated', message: 'Staff profile updated: Michael Brown', time: '1 day ago', user: 'Admin' },
-        { id: 5, type: 'exam_created', message: 'New exam "PHYS 201 Quiz" created', time: '1 day ago', user: 'Dr. Wilson' },
+        { id: 3, type: 'request_approved', message: 'Profile edit request approved for Aseda Nyamekye', time: '4 hours ago', user: 'Admin' },
+        { id: 4, type: 'exam_completed', message: 'Exam "Math 101 Final" completed', time: '5 hours ago', user: 'Sarah Johnson' },
+        { id: 5, type: 'request_pending', message: 'New profile edit request from Kofi Mensah', time: '6 hours ago', user: 'System' },
+        { id: 6, type: 'user_updated', message: 'Staff profile updated: Michael Brown', time: '1 day ago', user: 'Admin' },
+        { id: 7, type: 'request_rejected', message: 'Profile edit request rejected for Yaw Boateng', time: '1 day ago', user: 'Admin' },
+        { id: 8, type: 'exam_created', message: 'New exam "PHYS 201 Quiz" created', time: '1 day ago', user: 'Dr. Wilson' },
     ]
 
     const upcomingExams = [
@@ -39,6 +42,9 @@ export function AdminDashboardPage() {
             case 'user_registered': return <Users size={16} />
             case 'exam_completed': return <Calendar size={16} />
             case 'user_updated': return <Activity size={16} />
+            case 'request_pending': return <FileText size={16} />
+            case 'request_approved': return <CheckCircle size={16} />
+            case 'request_rejected': return <XCircle size={16} />
             default: return <AlertCircle size={16} />
         }
     }
@@ -49,6 +55,9 @@ export function AdminDashboardPage() {
             case 'user_registered': return 'activity-user'
             case 'exam_completed': return 'activity-complete'
             case 'user_updated': return 'activity-update'
+            case 'request_pending': return 'activity-request-pending'
+            case 'request_approved': return 'activity-request-approved'
+            case 'request_rejected': return 'activity-request-rejected'
             default: return 'activity-default'
         }
     }
@@ -137,6 +146,9 @@ export function AdminDashboardPage() {
                                 <option value="exam_created">Exam Created</option>
                                 <option value="user_registered">User Registered</option>
                                 <option value="exam_completed">Exam Completed</option>
+                                <option value="request_pending">Request Pending</option>
+                                <option value="request_approved">Request Approved</option>
+                                <option value="request_rejected">Request Rejected</option>
                             </select>
                         </div>
                     </div>

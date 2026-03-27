@@ -22,11 +22,11 @@ import { StudSignupPage } from './routes/Student/signUp'
 import { StaffdashboardPage } from './routes/Staff/staffDashboard'
 import { AssignNewExamPage } from './routes/Staff/assignNewExam'
 import { EditExamPage } from './routes/Staff/editExam'
-import { AdminManageUsersPage } from './routes/Staff/adminManageUsers'
 
 import { AdminDashboardPage } from './routes/Admin/adminDashboard'
 import { AdminStudPage } from './routes/Admin/adminstud' 
 import { AdminStaffPage } from './routes/Admin/adminstaff'
+import { RequestApprovalPage } from './routes/Admin/requestApproval'
 
 
 
@@ -50,14 +50,6 @@ const rootRedirectRoute = new Route({
 // ----------------------
 // STUDENT ROUTES
 // ----------------------
-
-studRootRoute.addChildren([
-  studRedirectRoute,
-  studLoginRoute,
-  studDashboardRoute,
-  studSignupRoute,
-  studProfileRoute, 
-])
 
 // Parent (/student)
 const studRootRoute = new Route({
@@ -149,6 +141,13 @@ const adminStaffRoute = new Route({
   component: AdminStaffPage,
 })
 
+// "/admin/requestApproval"
+const requestApprovalRoute = new Route({
+  getParentRoute: () => adminRootRoute,
+  path: 'requestApproval',
+  component: RequestApprovalPage,
+})
+
 // // "/staff/adminManageUsers"
 // const adminManageUsersRoute = new Route({
 //   getParentRoute: () => staffRootRoute,
@@ -168,6 +167,23 @@ const studSignupRoute = new Route({
   component: StudSignupPage,
 })
 
+const studProfileRoute = new Route({
+  getParentRoute: () => studRootRoute,
+  path: 'profile',
+  component: ProfilePage,
+})
+
+const staffProfileRoute = new Route({
+  getParentRoute: () => staffRootRoute,
+  path: 'profile',
+  component: ProfilePage,
+})
+
+const adminProfileRoute = new Route({
+  getParentRoute: () => adminRootRoute,
+  path: 'profile',
+  component: ProfilePage,
+})
 
 // ----------------------
 // ROUTE TREE
@@ -179,18 +195,22 @@ export const routeTree = rootRoute.addChildren([
     studLoginRoute,
     studDashboardRoute,
     studSignupRoute,
+    studProfileRoute,
   ]),
   staffRootRoute.addChildren([
     staffRedirectRoute,
     staffdashboardRoute,
     assignNewExamRoute,
     editExamRoute,
+    staffProfileRoute,
   ]),
   adminRootRoute.addChildren([
     adminRedirectRoute,
     adminDashboardRoute,
     adminStudRoute,
     adminStaffRoute,
+    requestApprovalRoute,
+    adminProfileRoute,
   ])
 ])
 
@@ -204,9 +224,3 @@ export const router = new Router({
 export function AppRouter() {
   return <RouterProvider router={router} />
 }
-
-const studProfileRoute = new Route({
-  getParentRoute: () => studRootRoute,
-  path: 'profile',
-  component: ProfilePage,
-})
