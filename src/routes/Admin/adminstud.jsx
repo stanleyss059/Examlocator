@@ -1,4 +1,4 @@
-import { Users, GraduationCap, Search, Plus, Filter, MoreVertical, Edit, Trash2, Mail, Calendar, CheckCircle, X } from 'lucide-react'
+import { Users, GraduationCap, Search, Plus, Filter, MoreVertical, Edit, Trash2, Mail, Calendar, CheckCircle, X, AlertTriangle, AlertCircle } from 'lucide-react'
 import { useState } from 'react'
 
 export const Route = {
@@ -104,6 +104,11 @@ export function AdminStudPage() {
         closeEditModal()
     }
 
+    const handleDeleteConfirm = () => {
+        console.log('Deleting student:', deletingStudent)
+        closeDeleteModal()
+    }
+
     const styles = {
         active: 'status-active',
         inactive: 'status-inactive',
@@ -125,48 +130,6 @@ export function AdminStudPage() {
             </div>
 
             <div className="main-content">
-                {/* Stats Grid */}
-                <div className="stats-grid">
-                    <div className="stat-card primary">
-                        <div className="stat-icon">
-                            <Users size={24} />
-                        </div>
-                        <div className="stat-content">
-                            <h3>{stats.totalStudents}</h3>
-                            <p>Total Students</p>
-                            <div className="stat-breakdown">
-                                <span className="trend-up">↑ {stats.newThisMonth} new this month</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="stat-card success">
-                        <div className="stat-icon">
-                            <CheckCircle size={24} />
-                        </div>
-                        <div className="stat-content">
-                            <h3>{stats.activeStudents}</h3>
-                            <p>Active Students</p>
-                            <div className="stat-breakdown">
-                                <span className="active-count">{Math.round((stats.activeStudents/stats.totalStudents)*100)}% of total</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="stat-card secondary">
-                        <div className="stat-icon">
-                            <Calendar size={24} />
-                        </div>
-                        <div className="stat-content">
-                            <h3>{stats.averageExams}</h3>
-                            <p>Avg. Exams/Student</p>
-                            <div className="stat-breakdown">
-                                <span className="trend-up">↑ 12% from last month</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 {/* Action Bar */}
                 <div className="action-bar">
                     <div className="search-filter-group">
@@ -254,28 +217,6 @@ export function AdminStudPage() {
                                 ))}
                             </tbody>
                         </table>
-                    </div>
-                </div>
-
-                {/* Quick Info Cards */}
-                <div className="info-cards-grid">
-                    <div className="info-card">
-                        <div className="info-icon email">
-                            <Mail size={20} />
-                        </div>
-                        <div className="info-content">
-                            <h4>Bulk Email</h4>
-                            <p>Send announcements to all students</p>
-                        </div>
-                    </div>
-                    <div className="info-card">
-                        <div className="info-icon export">
-                            <Users size={20} />
-                        </div>
-                        <div className="info-content">
-                            <h4>Export Data</h4>
-                            <p>Download student records as CSV</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -481,19 +422,22 @@ export function AdminStudPage() {
             {isDeleteModalOpen && (
                 <div className="modal-overlay" onClick={closeDeleteModal}>
                     <div className="modal-content delete-modal" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h2>Confirm Delete</h2>
-                            <button className="modal-close-btn" onClick={closeDeleteModal}>
-                                <X size={20} />
-                            </button>
+                        <div className="delete-modal-header">
+                            <div className="delete-modal-icon">
+                                <AlertTriangle size={32} />
+                            </div>
+                            <h2 className="delete-modal-title">Confirm Delete</h2>
                         </div>
                         <div className="delete-modal-body">
                             <p className="delete-message">
                                 Are you sure you want to delete <strong>{deletingStudent?.name}</strong>?
                             </p>
-                            <p className="delete-warning">This action cannot be undone.</p>
+                            <p className="delete-warning">
+                                <AlertCircle size={14} />
+                                This action cannot be undone.
+                            </p>
                         </div>
-                        <div className="modal-actions">
+                        <div className="delete-modal-footer">
                             <button type="button" className="modal-cancel-btn" onClick={closeDeleteModal}>
                                 Cancel
                             </button>

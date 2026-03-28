@@ -1,4 +1,4 @@
-import { Users, Briefcase, Search, Plus, Filter, MoreVertical, Edit, Trash2, Mail, Calendar, CheckCircle, Shield, X } from 'lucide-react'
+import { Users, Briefcase, Search, Plus, Filter, MoreVertical, Edit, Trash2, Mail, Calendar, CheckCircle, Shield, X, AlertTriangle, AlertCircle } from 'lucide-react'
 import { useState } from 'react'
 
 export const Route = {
@@ -139,47 +139,6 @@ export function AdminStaffPage() {
             </div>
 
             <div className="main-content">
-                {/* Stats Grid */}
-                <div className="stats-grid">
-                    <div className="stat-card primary">
-                        <div className="stat-icon">
-                            <Users size={24} />
-                        </div>
-                        <div className="stat-content">
-                            <h3>{stats.totalStaff}</h3>
-                            <p>Total Staff</p>
-                            <div className="stat-breakdown">
-                                <span className="trend-up">↑ {stats.newThisMonth} new this month</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="stat-card success">
-                        <div className="stat-icon">
-                            <CheckCircle size={24} />
-                        </div>
-                        <div className="stat-content">
-                            <h3>{stats.activeStaff}</h3>
-                            <p>Active Staff</p>
-                            <div className="stat-breakdown">
-                                <span className="active-count">{Math.round((stats.activeStaff/stats.totalStaff)*100)}% of total</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="stat-card secondary">
-                        <div className="stat-icon">
-                            <Briefcase size={24} />
-                        </div>
-                        <div className="stat-content">
-                            <h3>{stats.averageExams}</h3>
-                            <p>Avg. Exams/Staff</p>
-                            <div className="stat-breakdown">
-                                <span className="trend-up">↑ 8% from last month</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 {/* Action Bar */}
                 <div className="action-bar">
@@ -485,19 +444,22 @@ export function AdminStaffPage() {
             {isDeleteModalOpen && (
                 <div className="modal-overlay" onClick={closeDeleteModal}>
                     <div className="modal-content delete-modal" onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h2>Confirm Delete</h2>
-                            <button className="modal-close-btn" onClick={closeDeleteModal}>
-                                <X size={20} />
-                            </button>
+                        <div className="delete-modal-header">
+                            <div className="delete-modal-icon">
+                                <AlertTriangle size={32} />
+                            </div>
+                            <h2 className="delete-modal-title">Confirm Delete</h2>
                         </div>
                         <div className="delete-modal-body">
                             <p className="delete-message">
                                 Are you sure you want to delete <strong>{deletingStaff?.fullName}</strong>?
                             </p>
-                            <p className="delete-warning">This action cannot be undone.</p>
+                            <p className="delete-warning">
+                                <AlertCircle size={14} />
+                                This action cannot be undone.
+                            </p>
                         </div>
-                        <div className="modal-actions">
+                        <div className="delete-modal-footer">
                             <button type="button" className="modal-cancel-btn" onClick={closeDeleteModal}>
                                 Cancel
                             </button>
