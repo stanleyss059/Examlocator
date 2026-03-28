@@ -1,4 +1,4 @@
-import { Shield, Users, Calendar, BookOpen, TrendingUp, Activity, AlertCircle, Search, Plus, Filter, ArrowRight, LayoutDashboard, FileText, CheckCircle, XCircle } from 'lucide-react'
+import { Shield, Users, Calendar, BookOpen, TrendingUp, Activity, AlertCircle, Search, Plus, Filter, ArrowRight, LayoutDashboard, FileText, CheckCircle, XCircle, Mail } from 'lucide-react'
 import { useState } from 'react'
 
 export const Route = {
@@ -232,6 +232,24 @@ export function AdminDashboardPage() {
                         <div className="info-content">
                             <h4>View Reports</h4>
                             <p>Access system reports and analytics</p>
+                        </div>
+                    </div>
+                    <div className="info-card">
+                        <div className="info-icon email">
+                            <Mail size={20} />
+                        </div>
+                        <div className="info-content">
+                            <h4>Bulk Email</h4>
+                            <p>Send announcements to all students</p>
+                        </div>
+                    </div>
+                    <div className="info-card">
+                        <div className="info-icon export">
+                            <Users size={20} />
+                        </div>
+                        <div className="info-content">
+                            <h4>Export Data</h4>
+                            <p>Download student records as CSV</p>
                         </div>
                     </div>
                 </div>

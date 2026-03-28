@@ -1788,6 +1788,127 @@ body {
   font-size: 14px;
   font-weight: 500;
   color: #1F2937;
+  position: relative;
+}
+
+.admin-profile-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #F3F4F6;
+  border: none;
+  color: #1F2937;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-profile-btn:hover {
+  background-color: #E5E7EB;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 240px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid #E5E7EB;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.profile-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, #1E3A5F 0%, #254B5A 100%);
+}
+
+.profile-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1E3A5F;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.profile-role {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.profile-dropdown-header.student-header {
+  background: linear-gradient(135deg, #2A6F68 0%, #3d8b81 100%);
+}
+
+.profile-dropdown-header.staff-header {
+  background: linear-gradient(135deg, #1E3A5F 0%, #254B5A 100%);
+}
+
+.profile-dropdown-divider {
+  height: 1px;
+  background-color: #E5E7EB;
+}
+
+.profile-dropdown-actions {
+  padding: 8px 0;
+}
+
+.profile-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #374151;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+
+.profile-dropdown-item:hover {
+  background-color: #F9FAFB;
+}
+
+.profile-dropdown-item.logout {
+  color: #DC2626;
+}
+
+.profile-dropdown-item.logout:hover {
+  background-color: #FEF2F2;
+}
+
+.profile-dropdown-item svg {
+  color: #6B7280;
+}
+
+.profile-dropdown-item.logout svg {
+  color: #DC2626;
 }
 
 .admin-content {
@@ -1834,6 +1955,10 @@ body {
 
 .student-profile-btn:hover {
   background-color: #E5E7EB;
+}
+
+.student-nav-profile {
+  position: relative;
 }
 
 .student-content {
@@ -1998,48 +2123,115 @@ body {
   background-color: #254B5A;
 }
 
-/* DELETE MODAL STYLES */
+/* DELETE MODAL STYLES - REDESIGNED */
 .delete-modal {
-  max-width: 400px;
+  max-width: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.delete-modal-header {
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.delete-modal-icon {
+  width: 64px;
+  height: 64px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.delete-modal-icon svg {
+  color: #DC2626;
+}
+
+.delete-modal-title {
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 16px 0 0 0;
 }
 
 .delete-modal-body {
-  padding: 24px;
+  padding: 28px 32px;
   text-align: center;
 }
 
 .delete-message {
   font-size: 16px;
   color: #374151;
-  margin-bottom: 8px;
-  line-height: 1.5;
+  margin-bottom: 12px;
+  line-height: 1.6;
 }
 
 .delete-message strong {
-  color: #1F2937;
+  color: #DC2626;
   font-weight: 600;
 }
 
 .delete-warning {
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
   color: #DC2626;
-  margin-top: 12px;
+  background: #FEF2F2;
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  border: 1px solid #FECACA;
 }
 
-.modal-delete-btn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
-  background-color: #DC2626;
-  color: white;
+.delete-modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 0 32px 28px;
+}
+
+.modal-cancel-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  background-color: white;
+  color: #374151;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
+.modal-cancel-btn:hover {
+  background-color: #F9FAFB;
+  border-color: #D1D5DB;
+}
+
+.modal-delete-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.25);
+}
+
 .modal-delete-btn:hover {
-  background-color: #B91C1C;
+  background: linear-gradient(135deg, #B91C1C 0%, #991B1B 100%);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+  transform: translateY(-1px);
 }
 
 /* STAFF NAVBAR */
@@ -2080,6 +2272,10 @@ body {
 
 .staff-profile-btn:hover {
   background-color: #E5E7EB;
+}
+
+.staff-nav-profile {
+  position: relative;
 }
 
 .staff-content {
@@ -2453,6 +2649,623 @@ body {
 }
 .numbers{
   font-size: small;
+}
+
+/* ADMIN AUTHENTICATION STYLES */
+.admin-auth-page {
+  min-height: 100vh;
+  background-color: #F9FAFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.auth-header {
+  background: linear-gradient(135deg, #1E3A5F 0%, #254B5A 100%);
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.auth-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.auth-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 8px 0;
+}
+
+.auth-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+.auth-form {
+  padding: 32px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.form-label svg {
+  color: #6B7280;
+}
+
+.form-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 2px solid #E5E7EB;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #1F2937;
+  background-color: white;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #1E3A5F;
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.1);
+}
+
+.form-input.error {
+  border-color: #DC2626;
+}
+
+.form-input.error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.form-input::placeholder {
+  color: #9CA3AF;
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6B7280;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: #374151;
+}
+
+.error-message {
+  display: block;
+  font-size: 13px;
+  color: #DC2626;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.auth-submit-btn {
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(135deg, #1E3A5F 0%, #254B5A 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.25);
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #254B5A 0%, #2A5F7F 100%);
+  box-shadow: 0 6px 20px rgba(30, 58, 95, 0.35);
+  transform: translateY(-1px);
+}
+
+.auth-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.auth-footer {
+  padding: 24px 32px;
+  background-color: #F9FAFB;
+  text-align: center;
+}
+
+.auth-footer-text {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.auth-link {
+  color: #1E3A5F;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.auth-link:hover {
+  color: #254B5A;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .admin-auth-page {
+    padding: 16px;
+  }
+  
+  .auth-form {
+    padding: 24px;
+  }
+  
+  .auth-header {
+    padding: 32px 24px;
+  }
+  
+  .auth-title {
+    font-size: 20px;
+  }
+}
+
+/* ADMIN RESPONSIVE STYLES */
+@media (max-width: 1024px) {
+  .admin-navbar {
+    padding: 0 16px;
+  }
+  
+  .admin-nav-brand span {
+    display: none;
+  }
+  
+  .admin-nav-link {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  
+  .admin-nav-link span {
+    display: none;
+  }
+  
+  .admin-content {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-navbar {
+    padding: 0 12px;
+    height: 56px;
+  }
+  
+  .admin-nav-logo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .admin-nav-links {
+    gap: 4px;
+  }
+  
+  .admin-nav-link {
+    padding: 8px 8px;
+  }
+  
+  .admin-profile-btn {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .admin-content {
+    padding: 12px;
+  }
+  
+  /* Admin Dashboard Responsive */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .stat-card {
+    padding: 16px;
+  }
+  
+  .stat-number {
+    font-size: 20px;
+  }
+  
+  .recent-activities {
+    margin-top: 20px;
+  }
+  
+  .activity-list {
+    gap: 8px;
+  }
+  
+  .activity-item {
+    padding: 12px;
+  }
+  
+  /* Admin Students/Staff Page Responsive */
+  .action-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .search-filter-group {
+    flex-direction: column;
+    max-width: none;
+  }
+  
+  .admin-student-page .search-box,
+  .admin-staff-page .search-box {
+    max-width: none;
+  }
+  
+  .students-table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+  }
+  
+  .students-table {
+    min-width: 700px;
+  }
+  
+  .students-table th,
+  .students-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+  
+  .student-avatar,
+  .staff-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+  
+  .status-badge,
+  .staff-id,
+  .course-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  
+  /* Request Approval Page Responsive */
+  .admin-request-page {
+    padding: 12px;
+  }
+  
+  .request-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .request-stat-card {
+    padding: 16px;
+  }
+  
+  .request-stat-card .stat-value {
+    font-size: 20px;
+  }
+  
+  .request-filters {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .request-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+  }
+  
+  .request-status-section {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .request-card-body {
+    padding: 0 16px 16px;
+  }
+  
+  .changes-header,
+  .change-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .request-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .approve-btn,
+  .reject-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Profile Page Responsive */
+  .profile-page {
+    padding: 12px;
+  }
+  
+  .profile-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .avatar-initials {
+    font-size: 24px;
+  }
+  
+  .profile-fields {
+    padding: 16px;
+  }
+  
+  .profile-field {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .field-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  
+  .stat-box {
+    padding: 12px 8px;
+  }
+  
+  .stat-box .stat-number {
+    font-size: 20px;
+  }
+  
+  /* Modals Responsive */
+  .modal-overlay {
+    padding: 16px;
+  }
+  
+  .modal-content {
+    max-width: 100%;
+    max-height: 95vh;
+    border-radius: 12px;
+  }
+  
+  .modal-header {
+    padding: 20px 20px 0 20px;
+  }
+  
+  .modal-form {
+    padding: 20px;
+  }
+  
+  .modal-form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .modal-cancel-btn,
+  .modal-save-btn {
+    width: 100%;
+  }
+  
+  /* Delete Modal Responsive */
+  .delete-modal {
+    max-width: 100%;
+    margin: 0 16px;
+  }
+  
+  .delete-modal-header {
+    padding: 24px 20px;
+  }
+  
+  .delete-modal-body {
+    padding: 24px 20px;
+  }
+  
+  .delete-modal-footer {
+    padding: 0 20px 24px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .modal-cancel-btn,
+  .modal-delete-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-navbar {
+    padding: 0 8px;
+    height: 52px;
+  }
+  
+  .admin-nav-logo {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .admin-profile-btn {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .admin-content {
+    padding: 8px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .stat-card {
+    padding: 12px;
+  }
+  
+  .request-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .students-table {
+    min-width: 600px;
+  }
+  
+  .students-table th,
+  .students-table td {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  .student-avatar,
+  .staff-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 10px;
+  }
+  
+  .profile-dropdown {
+    width: 200px;
+  }
+  
+  .profile-dropdown-header {
+    padding: 12px;
+  }
+  
+  .profile-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .profile-name {
+    font-size: 13px;
+  }
+  
+  .profile-role {
+    font-size: 11px;
+  }
+  
+  .profile-dropdown-item {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* STAFF AUTHENTICATION STYLES */
+.staff-auth-page {
+  min-height: 100vh;
+  background-color: #F9FAFB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.staff-header {
+  background: linear-gradient(135deg, #1E3A5F 0%, #254B5A 100%);
+}
+
+.staff-btn {
+  background: linear-gradient(135deg, #1E3A5F 0%, #254B5A 100%);
+}
+
+.staff-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1a2f4a 0%, #1e3a4a 100%);
+}
+
+.auth-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.auth-link-separator {
+  color: #9CA3AF;
+  font-size: 14px;
 }
 
 /* PROFILE PAGE STYLES */

@@ -22,11 +22,15 @@ import { StudSignupPage } from './routes/Student/signUp'
 import { StaffdashboardPage } from './routes/Staff/staffDashboard'
 import { AssignNewExamPage } from './routes/Staff/assignNewExam'
 import { EditExamPage } from './routes/Staff/editExam'
+import { StaffloginPage } from './routes/Staff/staffLogin'
+import StaffSignup from './routes/Staff/staffSignup'
 
 import { AdminDashboardPage } from './routes/Admin/adminDashboard'
 import { AdminStudPage } from './routes/Admin/adminstud' 
 import { AdminStaffPage } from './routes/Admin/adminstaff'
 import { RequestApprovalPage } from './routes/Admin/requestApproval'
+import AdminLogin from './routes/Admin/adminLogin'
+import AdminSignup from './routes/Admin/adminSignup'
 
 
 
@@ -82,14 +86,28 @@ const studRedirectRoute = new Route({
 const staffRedirectRoute = new Route({
   getParentRoute: () => staffRootRoute,
   path: '/',
-  component: () => <Navigate to="login" replace />,
+  component: () => <Navigate to="/staff/login" replace />,
+})
+
+// "/staff/signup" → "/staff/signup"
+const staffSignupRoute = new Route({
+  getParentRoute: () => staffRootRoute,
+  path: 'signup',
+  component: StaffSignup,
+})
+
+// "/staff/login" → "/staff/login"
+const staffLoginRoute = new Route({
+  getParentRoute: () => staffRootRoute,
+  path: 'login',
+  component: StaffloginPage,
 })
 
 // "/admin" → "/admin/login"
 const adminRedirectRoute = new Route({
   getParentRoute: () => adminRootRoute,
   path: '/',
-  component: () => <Navigate to="login" replace />,
+  component: () => <Navigate to="/admin/login" replace />,
 })
 
 // "/student/login"
@@ -185,11 +203,24 @@ const adminProfileRoute = new Route({
   component: ProfilePage,
 })
 
+const adminLoginRoute = new Route({
+  getParentRoute: () => adminRootRoute,
+  path: 'login',
+  component: AdminLogin,
+})
+
+const adminSignupRoute = new Route({
+  getParentRoute: () => adminRootRoute,
+  path: 'signup',
+  component: AdminSignup,
+})
+
 // ----------------------
 // ROUTE TREE
 // ----------------------
 export const routeTree = rootRoute.addChildren([
   rootRedirectRoute,
+  
   studRootRoute.addChildren([
     studRedirectRoute,
     studLoginRoute,
@@ -203,6 +234,8 @@ export const routeTree = rootRoute.addChildren([
     assignNewExamRoute,
     editExamRoute,
     staffProfileRoute,
+    staffSignupRoute,
+    staffLoginRoute,
   ]),
   adminRootRoute.addChildren([
     adminRedirectRoute,
@@ -211,6 +244,8 @@ export const routeTree = rootRoute.addChildren([
     adminStaffRoute,
     requestApprovalRoute,
     adminProfileRoute,
+    adminLoginRoute,
+    adminSignupRoute,
   ])
 ])
 
